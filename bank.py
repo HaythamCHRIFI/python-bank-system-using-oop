@@ -1,3 +1,4 @@
+from abc import ABC,abstractmethod
 #Parent class : User
 #Holds details about an user
 #Has a function to show user details
@@ -8,11 +9,15 @@
 
 print("**Hello Welcome to the bank system**\n\n")
 
-class User:
+class User(ABC):
     def __init__(self,name,age,gender) :
         self.__name = name
         self.__age = age
         self.__gender = gender
+
+    @abstractmethod
+    def view_blanace(self):
+        pass
 
     def getName(self):
         return self.__name
@@ -42,9 +47,6 @@ class UserAccount(User):
         super().__init__(name, age, gender)
         self.balance = 0
 
-    def __str__(self):
-        return f"## {self.name} Account ##\n\n===============\n Name : {self.name} \n Age : {self.age} \n Aender : {self.gender} \n Amount : {self.balance}$ \n ==============="
-
     def deposit(self,amount):
         self.__amount = amount
         self.balance += amount
@@ -66,4 +68,7 @@ class UserAccount(User):
     def view_blanace(self):
         return f"## {self.name} Account ##\n\n===============\n Name : {self.name} \n Age : {self.age} \n Aender : {self.gender} \n Amount : {self.balance}$ \n ==============="
 
-
+user = UserAccount("haytham",22,"Male")
+user.deposit(1000)
+user.withdraw(500)
+print(user.view_blanace())
