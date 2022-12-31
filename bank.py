@@ -68,7 +68,3 @@ class UserAccount(User):
     def view_blanace(self):
         return f"## {self.name} Account ##\n\n===============\n Name : {self.name} \n Age : {self.age} \n Aender : {self.gender} \n Amount : {self.balance}$ \n ==============="
 
-user = UserAccount("haytham",22,"Male")
-user.deposit(1000)
-user.withdraw(500)
-print(user.view_blanace())
